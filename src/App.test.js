@@ -24,23 +24,23 @@ describe('Employee_form', () => {
 		expect(global.alert).toHaveBeenCalledWith('Please fill mandatory fields.');
 	});
 
-	// test('should show alert if lname is empty but fname is filled', () => {
-	// 	global.alert = jest.fn(); // Mock alert
-	// 	render(<Employee_form />);
+	test('should show alert if lname is empty but fname is filled', () => {
+		global.alert = jest.fn(); // Mock alert
+		render(<Employee_form />);
 
-	// 	const fnameInput = screen.getByLabelText(/first name/i);
-	// 	const lnameInput = screen.getByLabelText(/last name/i);
-	// 	const submitButton = screen.getByText(/submit/i);
+		const fnameInput = screen.getByLabelText(/first name/i);
+		const lnameInput = screen.getByLabelText(/last name/i);
+		const submitButton = screen.getByText(/submit/i);
 
-	// 	// Fill fname but leave lname empty
-	// 	fireEvent.change(fnameInput, { target: { value: 'John' } });
-	// 	fireEvent.change(lnameInput, { target: { value: '' } });
+		// Fill fname but leave lname empty
+		fireEvent.change(fnameInput, { target: { value: 'John' } });
+		fireEvent.change(lnameInput, { target: { value: '' } });
 
-	// 	fireEvent.click(submitButton);
+		fireEvent.click(submitButton);
 
-	// 	// Expect alert for lname
-	// 	expect(global.alert).toHaveBeenCalledWith('Last name is mandatory if first name is provided.');
-	// });
+		// Expect alert for lname
+		expect(global.alert).toHaveBeenCalledWith('Last name is mandatory if first name is provided.');
+	});
 
 
 	test('should call the API when the fields are filled', () => {
